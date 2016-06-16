@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="ConsoleView">
+    <output-path>$PROJECT_DIR$/out/artifacts/ConsoleView</output-path>
+    <root id="archive" name="ConsoleView.jar">
+      <element id="module-output" name="ConsoleView" />
+    </root>
+  </artifact>
+</component>

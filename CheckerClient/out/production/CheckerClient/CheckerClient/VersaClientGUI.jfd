@@ -1,0 +1,93 @@
+JFDML JFormDesigner: "5.2.3.0.281" Java: "1.8.0_77" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
+			"$horizontalGroup": "par l {seq {space :::p, par l {comp connectionLabel::l:::x, seq {par l {comp usersScrollPane:::p:355:p, comp usersLabel:::p::p, seq l {par l {comp ipAddressLabel::l:p::p, comp portLabel::t:p::p, comp nameLabel::t:p::p}, space :p:18:p, par l:::p {comp ipAddressField:::::x, comp portField:::::x, comp nameField:::p:121:p}, par l {seq {space :p:36:p, comp connectButton:::p::p}, seq l {space :p:26:p, comp disconnectButton:::p::p}}}}, space ::43:x}}}, seq l {space :p:73:p, comp chatButton:::p::p, space s:::p, comp chatButtonBot:::p::p, space :0:116:x}}"
+			"$verticalGroup": "par l {seq {par l {seq l {space :::p, par b {comp ipAddressLabel::b:p::p, comp ipAddressField::b:p::p}, space :::p, par b {comp portField::b:p::p, comp portLabel::b:p::p}, space :::p, par b {comp nameField::b:p::p, comp nameLabel::b:p::p}}, seq l {space :p:27:p, comp connectButton:::p::p, space u:::p, comp disconnectButton:::p::p}}, space s:::p, comp usersLabel:::p::p, space :::p, comp usersScrollPane:::p:168:p, space :::p, par b {comp chatButton::b:p::p, comp chatButtonBot::b:p::p}, space ::19:x, comp connectionLabel:::p::p}}"
+		} ) {
+			name: "this"
+			"defaultCloseOperation": 3
+			"title": "VersaCheckers"
+			"resizable": false
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "ipAddressField"
+				"text": "127.0.0.1"
+				"nextFocusableComponent": new FormReference( "portField" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "ipAddressFieldActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "ipAddressLabel"
+				"text": "IP Address:"
+				"focusable": false
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "connectButton"
+				"text": "Connect"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "connectButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "portLabel"
+				"text": "Port:"
+				"focusable": false
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "portField"
+				"text": "29834"
+				"nextFocusableComponent": new FormReference( "nameField" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "portFieldActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "connectionLabel"
+				"text": "Not connected"
+				"focusable": false
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "disconnectButton"
+				"text": "Disconnect"
+				"enabled": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "disconnectButtonActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "nameLabel"
+				"text": "Name:"
+				"focusable": false
+			} )
+			add( new FormComponent( "javax.swing.JTextField" ) {
+				name: "nameField"
+				"nextFocusableComponent": new FormReference( "connectButton" )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "nameFieldActionPerformed", true ) )
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "usersLabel"
+				"text": "Users:"
+				"focusable": false
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "chatButton"
+				"text": "New Game"
+				"enabled": false
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "chatButtonActionPerformed", true ) )
+			} )
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "usersScrollPane"
+				add( new FormComponent( "javax.swing.JList" ) {
+					name: "userList"
+					"selectionMode": 0
+					"focusable": false
+					"maximumSize": new java.awt.Dimension( 0, 50 )
+				} )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "chatButtonBot"
+				"text": "New Bot Game"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "chatButtonActionPerformed", true ) )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "chatButtonBotActionPerformed", true ) )
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"size": new java.awt.Dimension( 420, 420 )
+			"location": new java.awt.Point( 0, 0 )
+		} )
+	}
+}

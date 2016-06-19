@@ -1,3 +1,9 @@
+/* Copyright (c) 2016, Mikhail Kotlik and Sam Xu
+ * Versa Checkers
+ * APCS Spring Final Project
+ * VersaServerGUI
+ */
+
 package CheckerServer;
 
 import javax.swing.*;
@@ -6,20 +12,86 @@ import CheckerServer.VersaServerThread;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-/* Copyright (c) 2016, Mikhail Kotlik and Sam Xu
- * Versa Checkers
- * APCS Spring Final Project
- * VersaServerGUI
- */
-
 public class VersaServerGUI  extends JFrame{
-    private VersaServer server;
+    //===Instance Variables
+    private VersaServer server; //Reference to the main server thread
 
-    public VersaServerGUI(){
+    //Graphics Variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel clientListLabel;
+    private javax.swing.JLabel connectionLabel;
+    private javax.swing.JButton listenButton;
+    private javax.swing.JScrollPane mainScrollPane;
+    private javax.swing.JTextArea mainTextArea;
+    private javax.swing.JTextField portField;
+    private javax.swing.JButton stopButton;
+    // End of variables declaration//GEN-END:variables
+
+    //===Constructor
+    private VersaServerGUI(){
         initComponents();
         server = new VersaServer(this);
         addWindowListener(new serverWindowListener());
     }
+
+    //===Main
+
+    public static void main(String args[]) {
+        /*
+         * Set the Nimbus look and feel
+         */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /*
+         * Start a server thread, create and display the server window
+         */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+                new VersaServerGUI().setVisible(true);
+            }
+        });
+    }
+
+    //===Server to Graphics Methods
+
+    private void startListening() {
+        int port = Integer.parseInt(portField.getText());
+        if (server.startListener(port) == 1) {
+            connectionLabel.setText("Listening on port " + port);
+            listenButton.setEnabled(false);
+            stopButton.setEnabled(true);
+        } else {
+            connectionLabel.setText("Unable to listen to port: " + port);
+        }
+    }
+
+    void writeClientList(String[] clientList) {
+        mainTextArea.setText("");
+        for (int i = 0; i < clientList.length; i++) {
+            mainTextArea.append(clientList[i] + "\n");
+        }
+    }
+
+    //===Graphics Generation
 
     /**
      * This method is called by the constructor to create the form
@@ -119,10 +191,14 @@ public class VersaServerGUI  extends JFrame{
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //===GUI Action Methods
+
+    //Starts the listening processes on the server when the button is toggled
     private void listenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listenButtonActionPerformed
         startListening();
     }//GEN-LAST:event_listenButtonActionPerformed
 
+    //Stops the server listening process when the button is toggled
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopButtonActionPerformed
         if (server.stopListening() == 1) {
             connectionLabel.setText("No connection");
@@ -133,79 +209,15 @@ public class VersaServerGUI  extends JFrame{
         }
     }//GEN-LAST:event_stopButtonActionPerformed
 
+    //Starts listening again on new port if port change is detected while server is running
     private void portFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_portFieldActionPerformed
         if (listenButton.isEnabled()) {
             startListening();
         }
     }//GEN-LAST:event_portFieldActionPerformed
 
-    private void startListening() {
-        int port = Integer.parseInt(portField.getText());
-        if (server.startListener(port) == 1) {
-            connectionLabel.setText("Listening on port " + port);
-            listenButton.setEnabled(false);
-            stopButton.setEnabled(true);
-        } else {
-            connectionLabel.setText("Unable to listen to port: " + port);
-        }
-    }
 
-    public void writeClientList(String[] clientList) {
-        mainTextArea.setText("");
-        for (int i = 0; i < clientList.length; i++) {
-            mainTextArea.append(clientList[i] + "\n");
-        }
-    }
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel clientListLabel;
-    private javax.swing.JLabel connectionLabel;
-    private javax.swing.JButton listenButton;
-    private javax.swing.JScrollPane mainScrollPane;
-    private javax.swing.JTextArea mainTextArea;
-    private javax.swing.JTextField portField;
-    private javax.swing.JButton stopButton;
-    // End of variables declaration//GEN-END:variables
-
-    /**
-     * main method that the server will use to run
-     */
-    public static void main(String args[]) {
-        /*
-         * Set the Nimbus look and feel
-         */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VersaServerGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /*
-         * Create and display the form
-         */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-                new VersaServerGUI().setVisible(true);
-            }
-        });
-    }
-
-    //calls server to stop listening
+    //Special window listener class that stops the server if the window is closing
     private class serverWindowListener extends WindowAdapter {
         @Override
         public void windowClosing(WindowEvent e) {

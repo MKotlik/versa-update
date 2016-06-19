@@ -69,7 +69,7 @@ class VersaCheckers {
     //===Board Operation Static Methods
 
     //Converts a board array into a string version
-    private static String boardToString(int[][] b){
+    static String boardToString(int[][] b){
         String save = "[";
         for(int [] y : b){
             save += "[";

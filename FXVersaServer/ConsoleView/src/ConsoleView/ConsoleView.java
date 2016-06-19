@@ -1,3 +1,11 @@
+/**
+ * VersaCheckers
+ * ConsoleView - ConsoleView
+ * @author Mikhail Kotlik, Sam Xu
+ * @version 1
+ * Copyright (c) 2016, Mikhail Kotlik and Sam Xu
+ */
+
 package ConsoleView;
 
 import java.io.IOException;

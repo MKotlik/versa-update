@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <VBox prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox minHeight="-Infinity" prefHeight="50.0" prefWidth="200.0">
+                     <children>
+                        <Label text="VersaCheckers">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label text="Test Server" textAlignment="CENTER">
+                           <HBox.margin>
+                              <Insets left="50.0" top="15.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <AnchorPane minHeight="-Infinity" prefHeight="25.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="14.0" prefHeight="30.0" prefWidth="200.0" AnchorPane.leftAnchor="20.0">
+                           <children>
+                              <Label text="Running">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Label text="since">
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label text="23:26 on 29.5.2016">
+                                 <HBox.margin>
+                                    <Insets left="5.0" top="2.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <Button mnemonicParsing="false" text="Stop" AnchorPane.rightAnchor="20.0" />
+                     </children>
+                  </AnchorPane>
+                  <HBox prefWidth="200.0">
+                     <children>
+                        <Label text="Status:">
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Icon Here">
+                           <HBox.margin>
+                              <Insets left="10.0" top="2.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ScrollPane minHeight="-Infinity" prefHeight="60.0">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                           <content>
+                              <VBox minWidth="-Infinity" prefWidth="400.0">
+                                 <padding>
+                                    <Insets left="3.0" />
+                                 </padding>
+                                 <children>
+                                    <Label text="Server stopping in 3 mins, at 14:22" />
+                                    <Label text="Internet connection lost! Will retry connection at 15:00" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </top>
+         <center>
+            <TabPane prefHeight="400.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="80.0" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Main">
+                     <content>
+                        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                           <items>
+                              <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="426.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Users/Games List" />
+                                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="60.0">
+                                      <tabs>
+                                        <Tab text="Users" />
+                                        <Tab text="Games" />
+                                      </tabs>
+                                       <VBox.margin>
+                                          <Insets top="2.0" />
+                                       </VBox.margin>
+                                    </TabPane>
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="426.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Console" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </items>
+                        </SplitPane>
+                     </content>
+                  </Tab>
+                <Tab text="Settings">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </Tab>
+                  <Tab text="About">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    </content>
+                  </Tab>
+              </tabs>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+            </TabPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

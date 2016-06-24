@@ -10,18 +10,17 @@ package FXVersaServer;
 
 import java.io.IOException;
 
+import FXVersaServer.ConsoleView.ConsoleView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import javax.swing.border.Border;
 
 
 public class App extends Application {
@@ -49,6 +48,7 @@ public class App extends Application {
         }
 
         showUserGameList();
+        showConsoleView();
 
     }
 
@@ -70,15 +70,26 @@ public class App extends Application {
             FXMLLoader loader2 = new FXMLLoader(App.class.getResource("view/GameList.fxml"));
             AnchorPane userList = (AnchorPane) loader1.load();
             AnchorPane gameList = (AnchorPane) loader2.load();
-            TabPane userGamePane = ((TabPane) ((VBox) ((SplitPane) ((TabPane) ((BorderPane) rootLayout.getChildren().
-                    get(0)).getChildren().get(1)).getTabs().get(0).getContent()).getItems().get(0)).getChildren().
-                    get(1));
+            SplitPane gameConsolePane = ((SplitPane) ((TabPane) ((BorderPane) rootLayout.getChildren().get(0)).
+                    getChildren().get(1)).getTabs().get(0).getContent());
+            TabPane userGamePane = ((TabPane) ((VBox) gameConsolePane.getItems().get(0)).getChildren().get(1));
             userGamePane.getTabs().get(0).setContent(userList);
             userGamePane.getTabs().get(1).setContent(gameList);
         } catch (IOException e) {
             // Exception gets thrown if the fxml file could not be loaded
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Displays the console view in the window.
+     */
+    public void showConsoleView() {
+        SplitPane gameConsolePane = ((SplitPane) ((TabPane) ((BorderPane) rootLayout.getChildren().get(0)).
+                getChildren().get(1)).getTabs().get(0).getContent());
+        VBox consoleBox =  ((VBox) gameConsolePane.getItems().get(0));
+        ConsoleView console = new ConsoleView();
+        consoleBox.getChildren().add(console);
     }
 
     public static void main(String[] args) {

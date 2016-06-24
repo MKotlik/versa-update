@@ -107,12 +107,12 @@
               <tabs>
                 <Tab text="Main">
                      <content>
-                        <SplitPane dividerPositions="0.5" prefHeight="160.0" prefWidth="200.0">
+                        <SplitPane dividerPositions="0.5" prefHeight="400.0" prefWidth="800.0">
                            <items>
                               <VBox alignment="TOP_CENTER" minWidth="-Infinity" prefHeight="426.0" prefWidth="200.0">
                                  <children>
                                     <Label text="Users/Games List" />
-                                    <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="60.0">
+                                    <TabPane prefHeight="402.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" tabMinWidth="60.0">
                                       <tabs>
                                         <Tab text="Users" />
                                         <Tab text="Games" />
